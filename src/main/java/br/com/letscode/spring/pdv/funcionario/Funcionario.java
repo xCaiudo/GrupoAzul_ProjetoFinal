@@ -13,8 +13,13 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
     private String nome;
-    private int cod_interno;
+
+    @Column(unique=true, nullable = false)
+    private int codInterno;
+
     private String email;
     private String telefone;
 }
