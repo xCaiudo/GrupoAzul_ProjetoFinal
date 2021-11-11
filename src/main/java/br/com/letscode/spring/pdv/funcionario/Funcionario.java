@@ -14,7 +14,9 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private int cod_interno;
+
+    @Column(name = "cod_interno")
+    private int codInterno;
     private String email;
     private String telefone;
 }
