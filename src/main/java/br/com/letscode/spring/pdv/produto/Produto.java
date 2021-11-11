@@ -21,7 +21,8 @@ public class Produto {
 
     private Integer valor;
     private Integer qtd;
-    @Column(unique=true)
-    private Integer cod_interno;
+
+    @Column(unique=true, nullable = false)
+    private Integer codInterno;
 
 }

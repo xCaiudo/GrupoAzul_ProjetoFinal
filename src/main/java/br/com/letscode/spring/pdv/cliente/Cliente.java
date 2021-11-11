@@ -11,15 +11,20 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
+@RequiredArgsConstructor
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    protected int id;
 
     @Column(nullable = false)
     private String nome;
 
+
     private String email;
     private String telefone;
+
+    @Column(unique = true, nullable = false)
+    private int codInterno;
 }
