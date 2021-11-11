@@ -1,6 +1,6 @@
 # GrupoAzul_ProjetoFinal
 
-Readme apenas para ilutrar a quem interessar a ideia do projeto pois ele esta incompleto e não funcionando até onde está, membros com falta de tempo e pouco tempo para entrega
+Readme apenas para ilutrar a quem interessar a ideia do projeto pois ele esta incompleto e não funcionando até onde está, membros com falta de tempo e pouco tempo para entrega,
 isso hoje dia 11/11/2021. No futuro quem sabe não teremos update quanto possuirmos mais conhecimento.
 
 Tentativa de realizar um sistema PDV simples utilizando springboot.
