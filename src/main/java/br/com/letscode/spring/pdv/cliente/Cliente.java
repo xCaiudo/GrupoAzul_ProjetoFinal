@@ -11,12 +11,12 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
-@RequiredArgsConstructor
+
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    private int id;
 
     @Column(nullable = false)
     private String nome;
