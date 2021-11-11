@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.letscode.spring.pdv.exception.ExceptionClienteNaoExiste;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +21,15 @@ public class RestControllerCliente {
     public List<Cliente>listarTodos() {return this.clientes;}
 
     @GetMapping("{codInterno}")
-    public Optional<Cliente> buscaDetalhada(@PathVariable String codInterno){
-        final Optional<Cliente> clienteEncontrado = this.buscar(codInterno);
-        return clienteEncontrado;
+    public Cliente buscaDetalhada(@PathVariable int codInterno){
+        Optional<Cliente> clienteEncontrado = this.buscar(codInterno);
+        return clienteEncontrado
+                .orElseThrow(()-> new ExceptionClienteNaoExiste(codInterno));
     }
 
-    private Optional<Cliente> buscar(String codInterno) {
+    private Optional<Cliente> buscar(int codInterno) {
         return this.clientes.stream()
-                .filter(e -> codInterno.equals(e.getCodInterno()))
+                .filter(c -> c.getCodInterno() == codInterno)
                 .findFirst();
     }
 
@@ -40,7 +42,7 @@ public class RestControllerCliente {
     }
 
     @PutMapping("{codInterno}")
-    public Cliente atualizar(@PathVariable String codInterno, @RequestBody Cliente cliente) {
+    public Cliente atualizar(@PathVariable int codInterno, @RequestBody Cliente cliente) {
     Optional<Cliente> clienteEncontrado = this.buscar(codInterno);
     int indice = this.clientes.indexOf(clienteEncontrado);
     this.clientes.remove(clienteEncontrado);
@@ -50,7 +52,7 @@ public class RestControllerCliente {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{codInterno}")
-    public void excluir(@PathVariable String codInterno) {
+    public void excluir(@PathVariable int codInterno) {
         Optional<Cliente> clienteEncontrado = this.buscar(codInterno);
         this.clientes.remove(clienteEncontrado);
         log.info("O cliente de codigo interno {} foi excluido", codInterno);
