@@ -3,14 +3,15 @@ package br.com.letscode.spring.pdv.venda;
 import br.com.letscode.spring.pdv.cliente.Cliente;
 import br.com.letscode.spring.pdv.funcionario.Funcionario;
 import lombok.*;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
+
 @ToString
 @Entity
 public class Venda {
@@ -20,10 +21,8 @@ public class Venda {
     private int Id;
 
     @Column(nullable = false)
-    private String id_funcionario;
-    private String id_cliente;
-    private Integer total;
-    private Integer data_venda;
+    private double total;
+    private LocalDate data_venda;
 
     @ManyToOne
     @JoinColumn(name = "id_funcionario")
@@ -33,6 +32,21 @@ public class Venda {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
+    public void setTotal(double valor) {
+        this.total += valor;
+    }
 
+    public void setData_venda(LocalDate data_venda) {
+        this.data_venda = data_venda;
+    }
 
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
+
+

@@ -27,4 +27,7 @@ public class Cliente {
 
     @Column(unique = true, nullable = false)
     private int codInterno;
+
 }
+
+

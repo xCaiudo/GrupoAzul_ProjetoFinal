@@ -3,6 +3,7 @@ package br.com.letscode.spring.pdv.produto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class Produto {
     @Column(nullable = false)
     private String descricao;
 
-    private Integer valor;
+    private double valor;
     private Integer qtd;
 
     @Column(unique=true, nullable = false)
